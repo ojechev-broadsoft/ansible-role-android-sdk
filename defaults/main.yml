@@ -35,7 +35,7 @@ rh_dependency_packages:
 
 android_sdk_update_path: true
 
-android_sdk_base_buildtools_version: 23.0.2 # Used for PATH when android_sdk_update_path is true
+android_sdk_base_buildtools_version: 28.0.3 # Used for PATH when android_sdk_update_path is true
 
 android_sdk_tools_to_install:
       - "build-tools-{{ android_sdk_base_buildtools_version }}"

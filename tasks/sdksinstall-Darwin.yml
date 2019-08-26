@@ -5,3 +5,17 @@
   # Skip linting here, because I need to implement something more sane for checking pre-installed SDKs
   tags:
     - skip_ansible_lint
+
+- name: Set Android environment in .bashrc
+  become: yes
+  blockinfile:
+    create: no
+    dest: /etc/profile
+    block: |
+      export ANDROID_SDK_ROOT="/usr/local/share/android-sdk"
+      export ANDROID_HOME=$ANDROID_SDK_ROOT
+      export ANDROID_TOOLS=$ANDROID_HOME/tools
+      export ANDROID_VERSION_BUILD_TOOLS=$ANDROID_HOME/build-tools
+      export ANDROID_BUILD_TOOLS=$ANDROID_HOME/build-tools/{{android_sdk_base_buildtools_version}}
+      export ANDROID_PLATFORM_TOOLS=$ANDROID_HOME/platform-tools
+      export PATH=$PATH:$ANDROID_HOME:$ANDROID_TOOLS:$ANDROID_VERSION_BUILD_TOOLS:$ANDROID_BUILD_TOOLS:$ANDROID_PLATFORM_TOOLS:$ANDROID_TOOLS/bin
