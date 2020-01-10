@@ -19,3 +19,10 @@
       export ANDROID_BUILD_TOOLS=$ANDROID_HOME/build-tools/{{android_sdk_base_buildtools_version}}
       export ANDROID_PLATFORM_TOOLS=$ANDROID_HOME/platform-tools
       export PATH=$PATH:$ANDROID_HOME:$ANDROID_TOOLS:$ANDROID_VERSION_BUILD_TOOLS:$ANDROID_BUILD_TOOLS:$ANDROID_PLATFORM_TOOLS:$ANDROID_TOOLS/bin
+
+
+- name: Add link to aapt in /usr/local/bin
+  file:
+    src: "/usr/local/share/android-sdk/build-tools/{{ android_sdk_base_buildtools_version }}/aapt"
+    dest: /usr/local/bin/aapt
+    state: link
